@@ -1,0 +1,6 @@
+$out_root/
+{
+  include libbzip2/
+}
+
+export $out_root/libbzip2/$import.target

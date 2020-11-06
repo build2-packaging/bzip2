@@ -1,0 +1,13 @@
+: 1
+name: bzip2
+version: 0.1.0-a.0.z
+summary: bzip2 C executable
+license: other: proprietary ; Not free/open source.
+description-file: README.md
+url: https://example.org/bzip2
+email: joel@jellynote.com
+depends: * build2 >= 0.13.0
+depends: * bpkg >= 0.13.0
+
+depends: libbzip2 == $
+
