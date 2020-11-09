@@ -1,1 +1,11 @@
-./: {*/ -build/} doc{README.md} manifest
+./ : bzip2/ bzip2recover/ manifest
+
+./ : doc/doc{**}
+
+# Bring the other executable scripts in the package.
+./ : file{bzgrep bzdiff bzmore}
+file{*}:
+{
+    install = bin/
+}
+

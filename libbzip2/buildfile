@@ -1,4 +1,6 @@
-./: {*/ -build/} doc{README.md} manifest
+./ : {*/ -build/ -doc/} manifest
+
+./ : doc/doc{**}
 
 # Don't install tests.
 #
