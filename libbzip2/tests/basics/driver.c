@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <string.h>
 #include <libbzip2/version.h>
-#include <libbzip2/bzlib.h>
+#include <bzlib.h>
 
 int starts_with(const char *pre, const char *str)
 {

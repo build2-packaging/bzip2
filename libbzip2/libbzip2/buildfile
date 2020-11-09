@@ -16,7 +16,7 @@ h{version}: in{version} $src_root/manifest
 
 # Build options.
 #
-c.poptions =+ "-I$out_root" "-I$src_root"
+cc.poptions =+ "-I$out_root" "-I$src_root"
 
 obja{*}: cc.poptions += #-DLIBBZIP2_STATIC_BUILD
 objs{*}: cc.poptions += #-DBZ_EXPORT
@@ -25,7 +25,7 @@ objs{*}: cc.poptions += #-DBZ_EXPORT
 #
 lib{bzip2}:
 {
-  cc.export.poptions = "-I$out_root" "-I$src_root"
+  cc.export.poptions = "-I$out_root" "-I$src_root" "-I$src_base"
   cc.export.libs = $intf_libs
 }
 
@@ -48,4 +48,9 @@ else
 {
   install         = include/libbzip2/
   install.subdirs = true
+}
+
+h{bzlib_private}@./ :
+{
+  install = false
 }
