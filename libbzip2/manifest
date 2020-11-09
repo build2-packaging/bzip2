@@ -4,7 +4,7 @@ version: 1.0.8
 project: bzip2
 summary: bzip2 is a freely available, patent free, high-quality data compressor.
 license: other: BSD
-description-file: ../upstream/README.md
+description-file: ../upstream/README
 url: https://www.sourceware.org/bzip2/
 src-url: https://sourceware.org/git/?p=bzip2.git
 package-url: https://github.com/build2-packaging/bzip2/
