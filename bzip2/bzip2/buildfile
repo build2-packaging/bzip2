@@ -3,8 +3,8 @@ import libs += libbzip2%lib{bzip2}
 
 
 ./ : exe{bzip2}: libue{bzip2} testscript
-./ : exe{bunzip2}: libue{bzip2} testscript
-./ : exe{bzcat}: libue{bzip2} testscript
+./ : exe{bunzip2}: libue{bzip2}
+./ : exe{bzcat}: libue{bzip2}
 
 libue{bzip2}: {h c}{**} $libs
 

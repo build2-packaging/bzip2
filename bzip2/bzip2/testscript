@@ -1,9 +1,28 @@
-: basics
-:
-$* 'World' >'Hello, World!'
 
-: missing-name
-:
-$* 2>>EOE != 0
-error: missing name
-EOE
+
+
+sample_files = $src_base/test/sample1.ref $src_base/test/sample1.bz2 \
+                $src_base/test/sample2.ref $src_base/test/sample2.bz2 \
+                $src_base/test/sample3.ref $src_base/test/sample3.bz2
+
++ln -s $sample_files $~/
+
+: sample1
+$* -1  <= ../sample1.ref >= sample1.rb2 >? ../sample1.bz2
+
+: sample2
+$* -2  <= ../sample2.ref >= sample2.rb2 >? ../sample2.bz2
+
+: sample3
+$* -3  <= ../sample3.ref >= sample3.rb2 >? ../sample3.bz2
+
+: sample1-d
+$* -d  <= ../sample1.bz2 >= sample1.tst >? ../sample1.ref
+
+: sample2-d
+$* -d  <= ../sample2.bz2 >= sample2.tst >? ../sample2.ref
+
+: sample3-ds
+$* -d  <= ../sample3.bz2 >= sample3.tst >? ../sample3.ref
+
+
