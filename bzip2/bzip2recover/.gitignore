@@ -1,5 +1,5 @@
-bzip2recovery
+bzip2recover
 
 # Testscript output directory (can be symlink).
 #
-test-bzip2recovery
+test-bzip2recover

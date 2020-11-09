@@ -1,5 +1,9 @@
 bzip2
+bunzip2
+bzcat
 
 # Testscript output directory (can be symlink).
 #
 test-bzip2
+test-bunzip2
+test-bzcat

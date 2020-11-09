@@ -1,0 +1,14 @@
+$out_root/
+{
+  include bzip2/
+  include bzip2recovery/
+}
+
+if($import.target == 'exe{bzip2recover}')
+{
+  export $out_root/bzip2recovery/$import.target
+}
+else
+{
+  export $out_root/bzip2/$import.target
+}
