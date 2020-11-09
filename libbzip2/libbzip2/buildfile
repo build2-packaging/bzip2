@@ -18,19 +18,19 @@ h{version}: in{version} $src_root/manifest
 #
 c.poptions =+ "-I$out_root" "-I$src_root"
 
-obja{*}: c.poptions += -DLIBBZIP2_STATIC_BUILD
-objs{*}: c.poptions += -DLIBBZIP2_SHARED_BUILD
+obja{*}: cc.poptions += #-DLIBBZIP2_STATIC_BUILD
+objs{*}: cc.poptions += #-DBZ_EXPORT
 
 # Export options.
 #
 lib{bzip2}:
 {
-  c.export.poptions = "-I$out_root" "-I$src_root"
-  c.export.libs = $intf_libs
+  cc.export.poptions = "-I$out_root" "-I$src_root"
+  cc.export.libs = $intf_libs
 }
 
-liba{bzip2}: c.export.poptions += -DLIBBZIP2_STATIC
-libs{bzip2}: c.export.poptions += -DLIBBZIP2_SHARED
+liba{bzip2}: cc.export.poptions += #-DLIBBZIP2_STATIC
+libs{bzip2}: cc.export.poptions += -DBZ_IMPORT
 
 # For pre-releases use the complete version to make sure they cannot be used
 # in place of another pre-release or the final version. See the version module
