@@ -1,12 +1,16 @@
 : 1
 name: libbzip2
-version: 0.1.0-a.0.z
+version: 1.0.8
 project: bzip2
-summary: bzip2 C library
-license: other: proprietary ; Not free/open source.
-description-file: README.md
-url: https://example.org/bzip2
-email: joel@jellynote.com
+summary: bzip2 is a freely available, patent free, high-quality data compressor.
+license: other: BSD
+description-file: ../upstream/README.md
+url: https://www.sourceware.org/bzip2/
+src-url: https://sourceware.org/git/?p=bzip2.git
+package-url: https://github.com/build2-packaging/bzip2/
+email: bzip2-devel@sourceware.org
+package-email: mjklaim@gmail.com
+
 depends: * build2 >= 0.13.0
 depends: * bpkg >= 0.13.0
-#depends: libhello ^1.0.0
+
