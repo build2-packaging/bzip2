@@ -38,9 +38,13 @@ liba{bzip2}: cc.export.poptions += #-DLIBBZIP2_STATIC
 libs{bzip2}: cc.export.poptions += -DBZ_IMPORT
 
 # Warnings cleanup
-if($c.class == 'gcc' && $c.target.class == 'windows')
+switch $c.class, $c.target.class
 {
-  obj{*}: cc.poptions += -Wno-deprecated
+  case 'msvc'
+    obj{*}: cc.poptions += -D_CRT_SECURE_NO_WARNINGS
+
+  case 'gcc', 'windows'
+    obj{*}: cc.poptions += -Wno-deprecated
 }
 
 # For pre-releases use the complete version to make sure they cannot be used

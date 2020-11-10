@@ -6,7 +6,11 @@ exe{bzip2recover}: {h c}{**} $libs
 c.poptions =+ "-I$out_root" "-I$src_root"
 
 # Warnings cleanup
-if($c.class == 'gcc' && $c.target.class == 'windows')
+switch $c.class, $c.target.class
 {
-  obj{*}: cc.poptions += -Wno-deprecated
+  case 'msvc'
+    obj{*}: cc.poptions += -D_CRT_SECURE_NO_WARNINGS
+
+  case 'gcc', 'windows'
+    obj{*}: cc.poptions += -Wno-deprecated
 }
