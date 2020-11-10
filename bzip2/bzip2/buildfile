@@ -10,6 +10,12 @@ libue{bzip2}: {h c}{**} $libs
 
 c.poptions =+ "-I$out_root" "-I$src_root"
 
+# Warnings cleanup
+if($c.class == 'gcc' && $c.target.class == 'windows')
+{
+  obj{*}: cc.poptions += -Wno-deprecated
+}
+
 ./ : file{test/*}
 file{*} :
 {

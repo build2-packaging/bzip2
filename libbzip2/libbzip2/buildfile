@@ -37,6 +37,12 @@ lib{bzip2}:
 liba{bzip2}: cc.export.poptions += #-DLIBBZIP2_STATIC
 libs{bzip2}: cc.export.poptions += -DBZ_IMPORT
 
+# Warnings cleanup
+if($c.class == 'gcc' && $c.target.class == 'windows')
+{
+  obj{*}: cc.poptions += -Wno-deprecated
+}
+
 # For pre-releases use the complete version to make sure they cannot be used
 # in place of another pre-release or the final version. See the version module
 # for details on the version.* variable values.
