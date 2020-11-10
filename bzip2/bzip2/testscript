@@ -1,28 +1,33 @@
 
+upstream = $src_root/../upstream
 
-
-sample_files = $src_base/test/sample1.ref $src_base/test/sample1.bz2 \
-                $src_base/test/sample2.ref $src_base/test/sample2.bz2 \
-                $src_base/test/sample3.ref $src_base/test/sample3.bz2
+sample_files = $upstream/sample1.ref $upstream/sample1.bz2 \
+                $upstream/sample2.ref $upstream/sample2.bz2 \
+                $upstream/sample3.ref $upstream/sample3.bz2
 
 +ln -s $sample_files $~/
 
 : sample1
-$* -1  <= ../sample1.ref >= sample1.rb2 >? ../sample1.bz2
+$* -1  <= ../sample1.ref >= sample1.rb2 == 0 ;
+diff -u ../sample1.bz2 sample1.rb2 == 0
 
 : sample2
-$* -2  <= ../sample2.ref >= sample2.rb2 >? ../sample2.bz2
+$* -2  <= ../sample2.ref >= sample2.rb2 == 0 ;
+diff -u ../sample2.bz2 sample2.rb2 == 0
 
 : sample3
-$* -3  <= ../sample3.ref >= sample3.rb2 >? ../sample3.bz2
+$* -3  <= ../sample3.ref >= sample3.rb2 == 0 ;
+diff -u ../sample3.bz2 sample3.rb2 == 0
 
 : sample1-d
-$* -d  <= ../sample1.bz2 >= sample1.tst >? ../sample1.ref
+$* -d  <= ../sample1.bz2 >= sample1.tst == 0 ;
+diff -u ../sample1.ref sample1.tst == 0
 
 : sample2-d
-$* -d  <= ../sample2.bz2 >= sample2.tst >? ../sample2.ref
+$* -d  <= ../sample2.bz2 >= sample2.tst == 0 ;
+diff -u ../sample2.ref sample2.tst == 0
 
 : sample3-ds
-$* -d  <= ../sample3.bz2 >= sample3.tst >? ../sample3.ref
-
+$* -d  <= ../sample3.bz2 >= sample3.tst == 0 ;
+diff -u ../sample3.ref sample3.tst == 0
 
