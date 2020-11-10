@@ -46,7 +46,7 @@ else
 #
 {h}{*}:
 {
-  install         = include/libbzip2/
+  install         = include/
   install.subdirs = true
 }
 
