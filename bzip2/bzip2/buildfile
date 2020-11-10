@@ -9,3 +9,10 @@ import libs += libbzip2%lib{bzip2}
 libue{bzip2}: {h c}{**} $libs
 
 c.poptions =+ "-I$out_root" "-I$src_root"
+
+./ : file{test/*}
+file{*} :
+{
+    install = false
+    dist = true
+}

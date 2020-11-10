@@ -1,9 +1,9 @@
 
-upstream = $src_root/../upstream
+sample_dir = $src_base/test
 
-sample_files = $upstream/sample1.ref $upstream/sample1.bz2 \
-                $upstream/sample2.ref $upstream/sample2.bz2 \
-                $upstream/sample3.ref $upstream/sample3.bz2
+sample_files = $sample_dir/sample1.ref $sample_dir/sample1.bz2 \
+                $sample_dir/sample2.ref $sample_dir/sample2.bz2 \
+                $sample_dir/sample3.ref $sample_dir/sample3.bz2
 
 +ln -s $sample_files $~/
 
