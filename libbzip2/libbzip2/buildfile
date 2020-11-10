@@ -44,10 +44,14 @@ else
 # Install into the libbzip2/ subdirectory of, say, /usr/include/
 # recreating subdirectories.
 #
-{h}{*}:
+{h}{*} :
 {
-  install         = include/
+  install         = include/libbzip2/
   install.subdirs = true
+}
+h{bzlib}@./ :
+{
+  install = include/
 }
 
 h{bzlib_private}@./ :
