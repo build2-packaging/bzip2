@@ -21,6 +21,11 @@ cc.poptions =+ "-I$out_root" "-I$src_root"
 obja{*}: cc.poptions += #-DLIBBZIP2_STATIC_BUILD
 objs{*}: cc.poptions += #-DBZ_EXPORT
 
+if($c.class == 'gcc' && $c.target.class != 'windows')
+{
+  objs{*}: cc.poptions += -fpic -fPIC
+}
+
 # Export options.
 #
 lib{bzip2}:
