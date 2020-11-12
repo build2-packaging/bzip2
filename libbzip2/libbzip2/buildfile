@@ -2,7 +2,19 @@ intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
 #import impl_libs += libhello%lib{hello}
 
-lib{bzip2}: {h c}{** -version} h{version} $impl_libs $intf_libs def{libbz2}
+lib{bzip2}: {h c}{** -version} h{version} $impl_libs $intf_libs
+
+# Symbol exporting on Windows is done via the .def file.
+#
+# We also clean up the upstream .def file to get rid of warnings and omit the
+# .exp file.
+#
+lib{bzip2}: def{libbz2}: include = ($c.target.class == 'windows')
+
+def{libbz2}: in{libbz2.def.in}
+{{
+  sed -e 's/^(LIBRARY|DESCRIPTION).*//' $path($<) >$path($>)
+}}
 
 # Include the generated version header into the distribution (so that we don't
 # pick up an installed one) and don't remove it when cleaning in src (so that
@@ -18,8 +30,8 @@ h{version}: in{version} $src_root/manifest
 #
 cc.poptions =+ "-I$out_root" "-I$src_root"
 
-obja{*}: cc.poptions += #-DLIBBZIP2_STATIC_BUILD
-objs{*}: cc.poptions += #-DBZ_EXPORT
+#obja{*}: cc.poptions += -DLIBBZIP2_STATIC_BUILD
+#objs{*}: cc.poptions += -DBZ_EXPORT
 
 if($c.class == 'gcc' && $c.target.class != 'windows')
 {
@@ -34,8 +46,11 @@ lib{bzip2}:
   cc.export.libs = $intf_libs
 }
 
-liba{bzip2}: cc.export.poptions += #-DLIBBZIP2_STATIC
-libs{bzip2}: cc.export.poptions += -DBZ_IMPORT
+# Note: while it may seem like a good idea to define -DBZ_IMPORT, it's
+# actually breaks things (see the bzlib.h header for details).
+#
+#liba{bzip2}: cc.export.poptions += -DLIBBZIP2_STATIC
+#libs{bzip2}: cc.export.poptions += -DBZ_IMPORT
 
 # Warnings cleanup
 switch $c.class, $c.target.class
