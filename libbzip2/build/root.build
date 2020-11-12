@@ -7,8 +7,3 @@ c{*}: extension = c
 #
 test.target = $c.target
 
-if($c.target.class == 'windows')
-{
-    info "Only the static library liba{bzip2} is supported on Windows."
-    bin.lib = static
-}

@@ -2,7 +2,7 @@ intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
 #import impl_libs += libhello%lib{hello}
 
-lib{bzip2}: {h c}{** -version} h{version} $impl_libs $intf_libs
+lib{bzip2}: {h c}{** -version} h{version} $impl_libs $intf_libs def{libbz2}
 
 # Include the generated version header into the distribution (so that we don't
 # pick up an installed one) and don't remove it when cleaning in src (so that
