@@ -21,7 +21,7 @@ switch $c.class, $c.target.class
 }
 
 ./ : file{test/*}
-file{*} :
+file{test/*} :
 {
     install = false
     dist = true
