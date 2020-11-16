@@ -1,0 +1,6 @@
+: 1
+name: bzip2
+version: 1.0.8+1
+summary: bzip2 is a freely available, patent free, high-quality data\
+ compressor.
+license: other: BSD
